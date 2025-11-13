@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel File</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            font-family: 'Poppins', sans-serif;
+            
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 50%;
+            text-align: center;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(10, 10, 10, 0.2);
+            color: #0f0f0f;
+        }
+        input::placeholder {
+            color: #ddd;
+        }
+        input:focus, select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .btn {
+            background: #364281;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #fcf9f9;
+            transform: scale(1.05);
+        }
+        .developer-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
+        .developer-info a {
+            color: #ff4081;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="text-white text-2xl mb-4">Upload Excel File</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <select id="module" name="module" required>
+                <option value="">-- Select Module --</option>
+                <option value="create_pdf_with_charts">Shell Profile & Temperature Analysis</option>
+                <option value="gear_tyre_axial_runout">Gear & Tyre Axial Run-out Analysis</option>
+                <option value="gear_radial_runout">Gear Radial Run-out Analysis</option>
+                <option value="support_roller_deflection">Support Roller Deflection Analysis</option>
+                <option value="support_roller_raceway">Support Roller Raceway Profile</option>
+            </select>
+            <input type="number" name="position" placeholder="Enter the number of positions" required><br><br>
+            <input type="file" name="file" required><br><br>
+            <input type="text" name="company_name" placeholder="Company Name" required><br><br>
+            <input type="text" name="equipment_name" placeholder="Equipment Name" required><br><br>
+            <input type="text" name="feed_rate" placeholder="Feed Rate" required><br><br>
+            <input type="date" name="date_of_measurement" required><br><br>
+            <input type="text" name="inlet" placeholder="Inlet Sheet Index (e.g., 1,2)"><br><br>
+            <input type="text" name="outlet" placeholder="Outlet Sheet Index (e.g., 3)"><br><br>
+            <input type="text" name="tdn" placeholder="TDN Sheet Index (e.g., 4)"><br><br>
+            <input type="text" name="tup" placeholder="TUP Sheet Index (e.g., 5)"><br><br>
+            <input type="text" name="ggdn" placeholder="GGDN Sheet Index (e.g., 6)"><br><br>
+            <input type="text" name="ggup" placeholder="GGUP Sheet Index (e.g., 7)"><br><br>
+            <button type="submit" class="btn">Upload</button>
+        </form>
+    </div>
+    <div class="developer-info">
+        <p><strong>Developer:</strong> Shiv Sunil Kasat</p>
+        <p>
+            <strong>📞</strong> 7058700732 <br>
+            <strong>✉️</strong> <a href="mailto:shivkasat477@gmail.com">shivkasat477@gmail.com</a>
+        </p>
+    </div>
+    <script>
+        gsap.from(".form-container", { opacity: 0, y: -50, duration: 1, ease: "power3.out" });
+        gsap.from("input, select", { opacity: 0, y: 20, duration: 0.8, stagger: 0.2, ease: "power2.out" });
+        gsap.from(".btn", { scale: 0, duration: 0.5, delay: 1, ease: "back.out(1.7)" });
+        gsap.from(".developer-info", { opacity: 0, x: 50, duration: 1, delay: 1.2, ease: "power3.out" });
+    </script>
+</body>
+</html>
